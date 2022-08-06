@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
+from app.models import mongodb
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -24,3 +25,13 @@ async def search(request: Request, q: str):
         "title": "북 콜렉터",
         "keyword": q
     })
+
+
+@app.on_event("startup")
+def app_startup():
+    mongodb.connect()
+
+
+@app.on_event("shutdown")
+def app_shutdown():
+    mongodb.close()
