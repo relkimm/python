@@ -9,10 +9,21 @@
 </head>
 <body>
     <h1>Post List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>아이디</th>
+                <th>제목</th>
+            </tr>
+        </thead>
+        <tbody>
     {% for post in post_list %}
-        <div>
-            {{ post.id }}. {{ post.title }}
-        </div>
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.title }}</td>
+            </tr>
     {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
