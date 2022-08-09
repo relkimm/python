@@ -20,4 +20,3 @@ def post_detail(request: HttpRequest, id: int) -> HttpResponse:
             "post": post,
         },
     )
-    pass
